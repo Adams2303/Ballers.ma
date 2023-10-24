@@ -1,0 +1,102 @@
+.info p {
+    color: lightgray;
+    padding-top: 40px;
+
+}
+
+.info h3 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.info {
+    text-align: center;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.ml-auto {
+    margin-left: 30px
+}
+
+.bio p {
+    color: lightgray;
+}
+
+p+p {
+    padding-bottom: 20px;
+}
+
+.info-list {
+    padding-top: 15px;
+}
+
+.info-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.info-list li {
+    padding: 4px 0;
+}
+
+.info-list label {
+    font-weight: 500;
+    margin: 0;
+    padding-right: 10px;
+}
+
+.info-list span {
+    color: lightgray;
+}
+
+.seperated {
+    background-position: 50%;
+    background-repeat: repeat-x;
+    background-size: auto 6px;
+    padding-bottom: 80px;
+    padding-top: 80px;
+    filter: invert(1);
+}
+
+.my-card {
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+    height: 400px;
+}
+
+.my-card .icon {
+    color: #fff;
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.card-body {
+    padding-top: 50px;
+}
+
+.card-body .title {
+    margin-bottom: 15px;
+    font-size: 1.25rem;
+}
+
+.card-body .text {
+    color: hsla(0, 0%, 100%, .8) !important;
+}
+
+.title h3 {
+    color: #fff;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+
+}

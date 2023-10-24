@@ -1,0 +1,18 @@
+Link:hover {
+    color: green;
+}
+
+.custom-navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    margin: auto;
+    background-color: #0c0c14;
+    border-right: 1px solid hsla(0, 0%, 100%, .1);
+}
+
+.header {
+    margin-left: 200px!important;
+}
