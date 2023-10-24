@@ -15,13 +15,11 @@ const AppRouter = () => {
         {userToken ? (
           <Route path="/" element={<DefaultLayout />}>
             <Route path="profile" element={<Profile />} />
-            {/* Add more authenticated routes here */}
           </Route>
         ) : (
           <Route path="/" element={<GuestLayout />}>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-            {/* Add more unauthenticated routes here */}
           </Route>
         )}
       </Routes>

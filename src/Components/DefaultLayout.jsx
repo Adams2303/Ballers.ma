@@ -76,7 +76,7 @@ export default function DefaultLayout() {
           style={{ height: "100vh" }}
         >
           <div>
-            <Navbar.Brand href="/home" className="text-white">
+            <Navbar.Brand href="/" className="text-white">
               Ballers.ma
             </Navbar.Brand>
 
@@ -141,7 +141,7 @@ export default function DefaultLayout() {
           </Link>
         </div>
       </div>
-      {/* <Outlet /> */}
+      <Outlet />
     </div>
   );
 }
