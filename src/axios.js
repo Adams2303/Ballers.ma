@@ -1,5 +1,4 @@
 import axios from "axios";
-import AppRouter from "./router";
 
 const axiosClient = axios.create({
   baseURL: `${process.env.REACT_APP_API_BASE_URL}api`,
@@ -18,7 +17,7 @@ axiosClient.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       localStorage.removeItem("TOKEN");
       window.location.reload();
-      // Routes.navigate("/login");
+      // AppRouter.navigate("/");
       return error;
     }
     throw error;

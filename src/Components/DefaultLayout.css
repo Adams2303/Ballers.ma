@@ -1,18 +1,117 @@
-Link:hover {
-    color: green;
-}
-
-.custom-navbar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    margin: auto;
-    background-color: #0c0c14;
-    border-right: 1px solid hsla(0, 0%, 100%, .1);
-}
 
 .header {
-    margin-left: 200px!important;
+    height: 100vh;
+    background-color: black;
+    background-image: url('https://pngimg.com/uploads/football_player/football_player_PNG119.png');
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding-top: 0px;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px;
+}
+
+.header-contact {
+    margin-left: 200px;
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 250px;
+    padding-left: 350px;
+    width: 50%;
+}
+
+.header-language {
+    margin-bottom: 20px;
+    width: 75px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-introduction {
+    text-align: left;
+}
+
+.header-introduction h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.header-introduction h4 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.header-introduction p {
+    color: hsla(0, 0%, 100%, .8);
+    ;
+}
+
+.header button {
+    background-color: #fff;
+    border-color: #fff;
+    color: #0b0b13;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .3px;
+    line-height: 42px;
+    padding: 0 25px;
+    transition: .4s;
+    width: 175px;
+}
+
+.header button:hover {
+    color: #fff;
+    background-color: #0b0b13;
+    border-color: rgb(4, 235, 165);
+
+}
+
+.animated-title {
+    color: rgb(4, 235, 165);
+    font-size: 24px;
+    display: inline-block;
+
+}
+
+.animated-title::before {
+    animation: bounceOutUp 2s ease infinite;
+}
+
+.animated-description::before {
+    animation: bounceOutUp 2s ease infinite;
+}
+
+@keyframes bounceOutUp {
+    0% {
+        transform: translateY(0);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+
+    100% {
+
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
 }

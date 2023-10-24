@@ -19,8 +19,16 @@ import "./profile.css";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import TestimonialBox from "./TestimonialBox";
 import Slider from "react-slick";
-
 export default function Profile() {
+  const [userInfo, setUserInfo] = useState({
+    name: "Adam Sadek",
+    age: 22,
+    location: "Temara, Morocco",
+    email: "sadekadam2303@gmail.com",
+    phone: "+212610670107",
+    // Add other user information here
+  });
+
   const settings = {
     dots: true,
     infinite: true,
@@ -29,24 +37,15 @@ export default function Profile() {
     slidesToScroll: 1,
   };
 
-  // const [userInfo, setUserInfo] = useState({
-  //   name: "Adam Sadek",
-  //   age: 22,
-  //   location: "Temara, Morocco",
-  //   email: "sadekadam2303@gmail.com",
-  //   phone: "+212610670107",
-  //   // Add other user information here
-  // });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+  };
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUserInfo({ ...userInfo, [name]: value });
-  // };
-
-  // const handleSubmit = () => {
-  //   // Handle submitting updated user information (e.g., send to server)
-  //   console.log("Updated User Info:", userInfo);
-  // };
+  const handleSubmit = () => {
+    // Handle submitting updated user information (e.g., send to server)
+    console.log("Updated User Info:", userInfo);
+  };
 
   return (
     <section
@@ -56,6 +55,7 @@ export default function Profile() {
         backgroundColor: "#0e1713",
         padding: "100px 0",
         color: "white",
+        overflow: "hidden",
       }}
     >
       <Container>
@@ -152,7 +152,7 @@ export default function Profile() {
             <p className="text-center mt-4"> Ballers.ma Dev Team</p>
             <h3 className="text-center">Adam Sadek</h3>
           </Col>
-          {/* <Col lg={7} className="ml-auto">
+          <Col lg={7} className="ml-auto">
             <div>
               <h3 className="title">Biography</h3>
               <div className="bio">
@@ -216,7 +216,7 @@ export default function Profile() {
               </div>
               <button onClick={handleSubmit}>Save Changes</button>
             </div>
-          </Col> */}
+          </Col>
         </Row>
         <div
           className="seperated"
