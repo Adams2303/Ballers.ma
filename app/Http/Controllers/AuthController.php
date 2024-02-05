@@ -6,17 +6,16 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Http\Request; 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Str;
 
 
 class AuthController extends Controller{
 public function signup(SignupRequest $request) {
 
-  // Validate the request
   $data = $request->validated();
-  
-  // Create the user
 
   $user = User::create([
     'name' => $data['name'],
@@ -24,8 +23,8 @@ public function signup(SignupRequest $request) {
     'password' => bcrypt($data['password']),
   ]);
   $token = $user->createToken('main')->plainTextToken;
-
-  // Return response
+  event(new Registered($user));
+  // $user->sendEmailVerificationNotification();
 
   return response([
     'user' => $user,
@@ -33,36 +32,33 @@ public function signup(SignupRequest $request) {
     ]);
 }
 
-public function login(LoginRequest $request){
+function login(LoginRequest $request) {
+    $credentials = $request->validated();
+    $remember = $credentials['remember'] ?? false;
+    unset($credentials['remember']);
 
-  $credentials = $request->validated();
-  $remember = $credentials['remember'] ?? false;
-  unset($credentials['remember']);
+    if (!Auth::attempt($credentials, $remember)) {
+        return response([
+            'error' => 'The Provided credentials are not correct'
+        ], 422);
+    }
+    
+    // $user = Auth::user();
+    // $token = $user->createToken('main')->plainTextToken;
 
-  if (!Auth::attempt($credentials, $remember)){
     return response([
-      'error' => 'The Provided credentials are not correct'
-    ], 422);
-  }
-  $user = Auth::user();
-  $token = $user->createToken('main')->plainTextToken;
-
-  return response([
-    'user' => $user,
-    'token' => $token
-  ]);
+        'user' => Auth::user(),
+        'token' => Auth::user()->createToken('main')->plainTextToken
+    ]);
 }
 
 public function logout(Request $request){
    
     $user = Auth::user();
-    // Revoke the token that was used to authenticate the current request...
     $user->currentAccessToken()->delete();
 
   return response([
       'success' => true
   ]); 
 }
-
-
 }
