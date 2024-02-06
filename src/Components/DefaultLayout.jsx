@@ -1,6 +1,7 @@
 import "./DefaultLayout.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import ParticlesBG from "./Particles/ParticlesBG";
 
 export default function DefaultLayout() {
   const [titles, setTitles] = useState([
@@ -25,7 +26,8 @@ export default function DefaultLayout() {
   }, [currentTitle, titles.length, currentDescription, descriptions.length]);
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div className="parent-container">
+      <ParticlesBG />
       <div className="header" id="header">
         <div className="header-top">
           <div className="header-contact">

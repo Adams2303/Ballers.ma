@@ -16,6 +16,7 @@ import { useStateContext } from "../Contexts/ContextProvider";
 import { Outlet } from "react-router-dom";
 import "./SideBar.css";
 import { useNavigate } from "react-router-dom";
+import ParticlesBG from "./Particles/ParticlesBG";
 
 export default function SideBar() {
   //   const navigation = [
@@ -51,23 +52,32 @@ export default function SideBar() {
         className="custom-navbar"
         fixed="left"
         expand="lg"
-        style={{ backgroundColor: "rgb(17, 18,17)" }}
+        style={{ zIndex: 3 }}
       >
         <Container
-          className="p-3 d-flex flex-column justify-content-between"
+          className="py-3 d-flex flex-column justify-content-between"
           style={{ height: "100vh" }}
         >
           <div>
-            <Navbar.Brand href="/" className="text-white">
+            <Navbar.Brand
+              href="/"
+              className="text-white text-center align-items-center fs-4 fw-normal "
+            >
               Ballers.ma
             </Navbar.Brand>
 
             <Nav className="d-flex flex-column mt-4">
-              <Nav.Link className="text-white" href="/">
+              <Nav.Link
+                className="text-white text-center sidebar-item"
+                href="/"
+              >
                 <FontAwesomeIcon icon={faHouse} className="px-2" />
                 Home
               </Nav.Link>
-              <Nav.Link className="text-white" href="/games">
+              <Nav.Link
+                className="text-white text-center sidebar-item"
+                href="/games"
+              >
                 <FontAwesomeIcon icon={faTrophy} className="px-2" />
                 Games
               </Nav.Link>
@@ -85,15 +95,18 @@ export default function SideBar() {
           <div>
             <div className="flex-grow-1"></div>
             <Nav className="d-flex flex-column">
-              <Nav.Link className="text-white" href="profile">
-                <FontAwesomeIcon icon={faUser} className="px-2" />
+              <Nav.Link
+                className="text-white text-center sidebar-item w-100"
+                href="http://localhost:3000/profile"
+              >
+                <FontAwesomeIcon icon={faUser} className="px-2 " />
                 Profile
               </Nav.Link>
               <Nav.Link
-                as="a"
+                as="button"
                 href="#"
                 onClick={(ev) => logout(ev)}
-                className="text-white"
+                className="text-white text-center sidebar-item"
               >
                 <FontAwesomeIcon icon={faRightFromBracket} className="px-2" />
                 Logout

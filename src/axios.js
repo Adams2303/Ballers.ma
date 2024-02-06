@@ -2,7 +2,13 @@ import axios from "axios";
 
 const axiosClient = axios.create({
   baseURL: `${process.env.REACT_APP_API_BASE_URL}api`,
+  // headers: {
+  //   "Content-Type": "application/json",
+  //   "Access-Control-Allow-Origin": "http://localhost:3000",
+  // },
 });
+
+export const appServerUrl = `${process.env.REACT_APP_API_BASE_URL}`;
 
 axiosClient.interceptors.request.use((config) => {
   config.headers.Authorization = `Bearer ${localStorage.getItem("TOKEN")}`;
@@ -11,6 +17,7 @@ axiosClient.interceptors.request.use((config) => {
 
 axiosClient.interceptors.response.use(
   (response) => {
+    console.log("axios response:", response);
     return response;
   },
   (error) => {
@@ -23,5 +30,4 @@ axiosClient.interceptors.response.use(
     throw error;
   }
 );
-
 export default axiosClient;

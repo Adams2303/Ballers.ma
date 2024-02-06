@@ -1,6 +1,10 @@
 import { createContext, useContext, useState } from "react";
 
 const StateContext = createContext({
+  showToast: false,
+  toastMessage: "",
+  setShowToast: () => {},
+  setToastMessage: () => {},
   currentUser: {},
   userToken: null,
   setCurrentUser: () => {},
@@ -8,11 +12,12 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({ children }) => {
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
   const [currentUser, setCurrentUser] = useState({});
   const [userToken, _setUserToken] = useState(
     localStorage.getItem("TOKEN") || ""
   );
-
   const setUserToken = (token) => {
     if (token) {
       localStorage.setItem("TOKEN", token);
@@ -24,7 +29,16 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <StateContext.Provider
-      value={{ currentUser, setCurrentUser, userToken, setUserToken }}
+      value={{
+        showToast,
+        setShowToast,
+        toastMessage,
+        setToastMessage,
+        currentUser,
+        setCurrentUser,
+        userToken,
+        setUserToken,
+      }}
     >
       {children}
     </StateContext.Provider>

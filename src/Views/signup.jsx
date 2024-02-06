@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import axiosClient from "../axios.js";
 import { useStateContext } from "../Contexts/ContextProvider.jsx";
+import ParticlesBG from "../Components/Particles/ParticlesBG.js";
 
 export default function Signup() {
   const { setCurrentUser, setUserToken } = useStateContext();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmaton] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState({ __html: "" });
 
   const navigate = useNavigate();
@@ -19,28 +20,42 @@ export default function Signup() {
     ev.preventDefault();
     setError({ __html: "" });
 
+    if (password !== passwordConfirmation) {
+      setError({ __html: "Passwords do not match." });
+      return;
+    }
+
     axiosClient
       .post("/signup", {
         name: fullName,
-        email,
-        password,
+        email: email,
+        password: password,
         password_confirmation: passwordConfirmation,
       })
       .then(({ data }) => {
         setCurrentUser(data.user);
         setUserToken(data.token);
+        // alert(
+        //   "Registration successful! Please check your email to verify your account."
+        // );
         navigate("/");
       })
       .catch((error) => {
-        if (error.response) {
-          const finalErrors = Object.values(error.response.data.errors).reduce(
+        let finalErrors = [];
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.errors
+        ) {
+          finalErrors = Object.values(error.response.data.errors).reduce(
             (accum, next) => [...accum, ...next],
             []
           );
           console.log(finalErrors);
           setError({ __html: finalErrors.join("<br>") });
+        } else {
+          console.error(error);
         }
-        console.error(error);
       });
   };
 
@@ -48,8 +63,9 @@ export default function Signup() {
     <div
       className="d-flex justify-content-center align-items-center"
       style={{
+        overflow: "hidden",
         height: "100vh",
-        backgroundColor: "rgb(17, 18, 17)",
+        backgroundColor: "#00060d",
       }}
     >
       <Form
@@ -75,24 +91,46 @@ export default function Signup() {
             style={{ color: "#0e9648", paddingRight: "15px" }}
           />
           <h5 style={{ margin: 0 }}>Account Registration</h5>
+          <Link
+            to="/"
+            type="button"
+            style={{
+              marginLeft: "auto",
+              textAlign: "center",
+              alignItems: "center",
+              padding: "0",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faXmark}
+              style={{
+                fontSize: "25px",
+                color: "#0e9648",
+                cursor: "pointer",
+                padding: "auto",
+              }}
+            />
+          </Link>
         </Form.Label>
         <div className="px-5 py-5">
           <h3 className="text-center mb-4">Create an Account</h3>
           {error.__html && (
             <div
-              className="bg-danger rounded py-2 px-3 text-white"
+              className="bg-danger rounded py-2 px-3 text-white w-75 text-center items-center"
+              style={{ margin: "0 auto" }}
               dangerouslySetInnerHTML={error}
             ></div>
           )}
           <div style={{ border: "1px solid #e9ecf", padding: "10px" }}>
             <Form.Group>
-              <Form.Label>Full Name</Form.Label>
+              <Form.Label>Full name</Form.Label>
               <Form.Control
                 type="text"
                 id="name"
                 name="name"
                 placeholder="Enter your full name"
                 required
+                autoFocus
                 value={fullName}
                 onChange={(ev) => setFullName(ev.target.value)}
               />
@@ -105,7 +143,6 @@ export default function Signup() {
                 name="email"
                 placeholder="Enter your email"
                 required
-                autoFocus
                 value={email}
                 onChange={(ev) => setEmail(ev.target.value)}
               />
@@ -131,7 +168,7 @@ export default function Signup() {
                 placeholder="Confirm your password"
                 required
                 value={passwordConfirmation}
-                onChange={(ev) => setPasswordConfirmaton(ev.target.value)}
+                onChange={(ev) => setPasswordConfirmation(ev.target.value)}
               />
             </Form.Group>
             <Button
@@ -142,15 +179,17 @@ export default function Signup() {
               Sign up
             </Button>
           </div>
-          <p className="text-center mt-3 mb-0">Already have an account?</p>
-          <Link
-            to="/login"
-            type="button"
-            className="btn btn-link w-100"
-            style={{ backgroundColor: "#343a40" }}
-          >
-            Log in
-          </Link>
+          <div className="d-flex justify-content-center mt-2">
+            <p className="text-center mt-2">Already have an account?</p>
+            <Link
+              to="/login"
+              type="button"
+              className="btn btn-link mt-0"
+              style={{ backgroundColor: "#343a40" }}
+            >
+              Log in
+            </Link>
+          </div>
         </div>
       </Form>
     </div>

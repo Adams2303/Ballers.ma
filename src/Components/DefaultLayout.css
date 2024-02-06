@@ -1,13 +1,21 @@
+.parent-container {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+    background-color: #00060d;
+    /* filter: brightness(1); */
+}
 
 .header {
     height: 100vh;
-    background-color: black;
     background-image: url('https://pngimg.com/uploads/football_player/football_player_PNG119.png');
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
     color: #fff;
     padding-top: 0px;
+    z-index: 2;
+    position: relative;
 }
 
 .header-top {
@@ -58,7 +66,6 @@
 
 .header-introduction p {
     color: hsla(0, 0%, 100%, .8);
-    ;
 }
 
 .header button {
@@ -81,16 +88,13 @@
     color: #fff;
     background-color: #0b0b13;
     border-color: rgb(4, 235, 165);
-
 }
 
 .animated-title {
     color: rgb(4, 235, 165);
     font-size: 24px;
     display: inline-block;
-
 }
-
 .animated-title::before {
     animation: bounceOutUp 2s ease infinite;
 }

@@ -1,15 +1,24 @@
-.header {
+.GL-parent-container {
+    overflow: hidden;
+    position: relative;
     height: 100vh;
-    background-color: black;
+    background-color: #00060d;
+    /* filter: brightness(1); */
+}
+
+.GL-header {
+    height: 100vh;
     background-image: url('https://pngimg.com/uploads/football_player/football_player_PNG119.png');
     background-size: contain;
     background-position: right;
     background-repeat: no-repeat;
     color: #fff;
     padding-top: 0px;
+    z-index: 2;
+    position: relative;
 }
 
-.header-top {
+.GL-header-top {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,14 +26,14 @@
     padding: 35px;
 }
 
-.header-contact {
+.GL-header-contact {
     width: 350px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.header-main {
+.GL-header-main {
     display: flex;
     flex-direction: column;
     padding-top: 250px;
@@ -32,34 +41,31 @@
     width: 50%;
 }
 
-.header-language {
-    margin-bottom: 20px;
-    width: 75px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.header-introduction {
+.GL-header-introduction {
     text-align: left;
 }
 
-.header-introduction h1 {
+.GL-header-introduction h1 {
     font-size: 48px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-.header-introduction h4 {
+.GL-header-introduction h4 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-.header-introduction p {
+.GL-header-introduction p {
     color: hsla(0, 0%, 100%, .8);
-    ;
 }
 
-.header button {
+.GL-header-main .link {
+    display: block;
+    width: 175px;
+}
+
+.GL-header-main button {
     background-color: #fff;
     border-color: #fff;
     color: #0b0b13;
@@ -75,25 +81,24 @@
     width: 175px;
 }
 
-.header button:hover {
+.GL-header-main button:hover {
     color: #fff;
     background-color: #0b0b13;
     border-color: rgb(4, 235, 165);
-
 }
 
-.animated-title {
+.GL-animated-title {
     color: rgb(4, 235, 165);
     font-size: 24px;
     display: inline-block;
 
 }
 
-.animated-title::before {
+.GL-animated-title::before {
     animation: bounceOutUp 2s ease infinite;
 }
 
-.animated-description::before {
+.GL-animated-description::before {
     animation: bounceOutUp 2s ease infinite;
 }
 

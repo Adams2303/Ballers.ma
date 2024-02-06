@@ -1,0 +1,100 @@
+#biography-edit{
+    margin-left: 200px;
+    padding: 100px 0;
+    background-color: #00060d;
+    color: #fff;
+    height: 100%;
+}
+
+.cancel-btn{
+    border-color: white;
+    color: #0b0b13;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .3px;
+    line-height: 42px;
+    padding: 0 25px;
+    transition: .4s;
+    width: 175px;
+}
+
+.cancel-btn:hover {
+    background-color: #0b0b13;
+    color: #fff;
+    border-color: #FF4D39;
+}
+
+.update-btn {
+    border-color: white;
+    color: #0b0b13;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .3px;
+    line-height: 42px;
+    padding: 0 25px;
+    transition: .4s;
+    width: 175px;
+}
+
+.update-btn:hover {
+    background-color: #0b0b13;
+    color: #fff;
+    border-color: #0495e1;
+}
+
+.user-details .form-control {
+    border: 0.01em solid lightgray!important;
+}
+
+.user-details .form-control:focus-within {
+    border-color: #0495e1!important;
+}
+
+.user-details .form-label {
+    color: lightgray!important;
+}
+
+.user-details .form-control {
+    color: lightgray!important;
+    background-color: #00060d;
+}
+
+.user-details .form-select {
+    color: lightgray!important;
+    background-color: #00060d;
+}
+
+.user-details .form-select {
+    border: 0.01em solid lightgray !important;
+}
+
+.user-details .form-select:focus-within {
+    border-color: #0495e1 !important;
+}
+
+.user-details .inline{
+    display: inline;
+}
+
+.customModal .modal-content {
+    background-color: #00060d;
+    border: 1px solid grey !important;
+    color: lightgray;
+
+}
+
+.customModal .form-control {
+    background-color: lightgray;
+}
+
+.cancel-btn .btn-close {
+    color: lightgray!important;
+}
