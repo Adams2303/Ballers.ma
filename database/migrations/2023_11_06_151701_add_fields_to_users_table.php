@@ -30,7 +30,15 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('profile_picture');
+            $table->dropColumn('team');
+            $table->dropColumn('birthday');
+            $table->dropColumn('bio');
+            $table->dropColumn('city');
+            $table->dropColumn('main_role');
+            $table->dropColumn('secondary_role');
+            $table->dropColumn('preferred_foot');
+            $table->dropColumn('height');
         });
     }
 };

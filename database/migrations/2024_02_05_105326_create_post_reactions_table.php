@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('post_reactions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('post_id')->constrained('posts');
+            $table->string('type'); // upvote, downvote
+            $table->foreignId('user_id')->constrained('users');
+            $table->timestamp('reacted_at')->nullable();
         });
     }
 
