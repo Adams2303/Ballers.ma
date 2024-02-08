@@ -24,7 +24,7 @@ public function signup(SignupRequest $request) {
   ]);
   $token = $user->createToken('main')->plainTextToken;
   event(new Registered($user));
-  // $user->sendEmailVerificationNotification();
+  //$user->sendEmailVerificationNotification();
 
   return response([
     'user' => $user,

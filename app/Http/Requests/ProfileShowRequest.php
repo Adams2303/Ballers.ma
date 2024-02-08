@@ -22,7 +22,18 @@ class ProfileShowRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'profile_picture' => '',
+            'team' => '',
+            'name' => '',
+            'username' => '',
+            'email' => '',
+            'bio' => '',
+            'birthday' => '',
+            'city' => '',
+            'main_role' => '',
+            'secondary_role' => '',
+            'preferred_foot' => '',
+            'height' => '',
         ];
     }
 }
