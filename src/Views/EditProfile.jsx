@@ -41,6 +41,7 @@ export default function EditProfile() {
     id: null,
     team: "",
     name: "",
+    username: "",
     email: "",
     bio: "",
     birthday: new Date(),
@@ -324,6 +325,22 @@ export default function EditProfile() {
                     }
                   />
                 </Form.Group>
+                <Form.Group className="mb-1" controlId="formUsername">
+                  {errors.username && <div>{errors.username}</div>}
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={profileData.username}
+                    placeholder="Enter your username"
+                    autoComplete="username"
+                    onChange={(e) =>
+                      setProfileData({
+                        ...profileData,
+                        username: e.target.value,
+                      })
+                    }
+                  />
+                </Form.Group>
                 <Form.Group className="mb-1" controlId="formEmail">
                   {errors.email && <div>{errors.email}</div>}
                   <Form.Label>Email</Form.Label>
@@ -331,6 +348,7 @@ export default function EditProfile() {
                     type="email"
                     value={profileData.email}
                     placeholder="Enter your email"
+                    autoComplete="email"
                     onChange={(e) =>
                       setProfileData({
                         ...profileData,

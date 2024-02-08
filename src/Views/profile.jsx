@@ -97,6 +97,7 @@ export default function Profile() {
                 </Link>
               </div>
               <h3 className="profile-name">{profileData.name}</h3>
+              <small className="username">{profileData.username}</small>
               <div className="bio">
                 <p>{profileData.bio}</p>
               </div>
